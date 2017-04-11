@@ -1,8 +1,10 @@
 # Analiza podatkov s programom R, 2016/17
 Avtor: Vida Maver
+
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2016/17.
 
-##Analiza izpustov zračnih emisij v evropskih državah.
+## Analiza izpustov zračnih emisij v evropskih državah.
+
 Analizirala bom izpuste zračnih emisij posameznih evropskih držav med letoma 2008 in 2014. Analizirala bom, kako je s količino izpustov ogljikovega dioksida, dušikovih oksidov in metana po posameznih državah in primerjala, v kateri državi je posameznih izpustov največ ter v kateri državi je vse skupaj največja količina izpuščenih zračnih emisij.
 
 Podatke bom večinoma pridobila iz Eurostata (http://ec.europa.eu/eurostat/data/database) in nekaj iz Wikipedie. Datoteke bodo oblike .csv in HTML.
