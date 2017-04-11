@@ -3,15 +3,15 @@ Avtor: Vida Maver
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2016/17.
 
-## Analiza izpustov zračnih emisij v evropskih državah.
+## Analiza zračnih emisij v evropskih državah.
 
-Analizirala bom izpuste zračnih emisij posameznih evropskih držav med letoma 2008 in 2014. Analizirala bom, kako je s količino izpustov ogljikovega dioksida, dušikovih oksidov in metana po posameznih državah in primerjala, v kateri državi je posameznih izpustov največ ter v kateri državi je vse skupaj največja količina izpuščenih zračnih emisij.
+Analizirala bom količine zračnih emisij posameznih evropskih držav med letoma 2008 in 2014. Analizirala bom, kako je s količino izpustov ogljikovega dioksida, dušikovih oksidov in metana po posameznih državah in primerjala, v kateri državi je posameznih izpustov največ ter v kateri državi je vse skupaj največja količina izpuščenih zračnih emisij.
 
 Podatke bom večinoma pridobila iz Eurostata (http://ec.europa.eu/eurostat/data/database) in nekaj iz Wikipedie. Datoteke bodo oblike .csv in HTML.
 
 Pridobljene podatke bom predstavila v tabeli, kjer bo v 1. stolpcu navedena država, v 2. stolpcu leto, v 3. količina izpustov ogljikovega dioksida, v 4. količina izpustov dušikovih oksidov in v 5. stolpcu količina izpustov metana.
 
-Moj cilj je ugotoviti, katera od evropskih držav ima največje količine izpustov zračnih emisij.
+Moj cilj je ugotoviti, katera od evropskih držav ima največje količine zračnih emisij.
 
 ## Program
 
