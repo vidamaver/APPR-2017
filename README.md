@@ -5,13 +5,13 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2016/17.
 
 ## Analiza zračnih emisij v evropskih državah.
 
-Analizirala bom količine zračnih emisij posameznih evropskih držav med letoma 2008 in 2014. Analizirala bom, kako je s količino izpustov ogljikovega dioksida, dušikovih oksidov in metana po posameznih državah in primerjala, v kateri državi je posameznih izpustov največ ter v kateri državi je vse skupaj največja količina izpuščenih zračnih emisij.
+Analizirala bom količine zračnih emisij posameznih evropskih držav med letoma 2008 in 2014. Analizirala bom, kako je s količino izpustov ogljikovega dioksida, dušikovih oksidov in metana po posameznih državah, primerjala, v kateri državi je posameznih in skupnih izpustov največ ter katera država ima največjo količino izpustov plinov v ozračje glede na njeno površino.
 
-Podatke bom večinoma pridobila iz Eurostata (http://ec.europa.eu/eurostat/data/database) in nekaj iz Wikipedie. Datoteke bodo oblike .csv in HTML.
+Podatke bom večinoma pridobila iz Eurostata (http://ec.europa.eu/eurostat/data/database) in nekaj iz Wikipedie (https://en.wikipedia.org/wiki/List_of_European_countries_by_area). Datoteke bodo oblike .csv in HTML.
 
-Pridobljene podatke bom predstavila v tabeli, kjer bo v 1. stolpcu navedena država, v 2. stolpcu leto, v 3. količina izpustov ogljikovega dioksida, v 4. količina izpustov dušikovih oksidov in v 5. stolpcu količina izpustov metana.
+Pridobljene podatke bom predstavila v tabeli, kjer bo v 1. stolpcu navedena država, v 2. stolpcu leto, v 3. količina izpustov glede na površino države, v 4. količina izpustov ogljikovega dioksida, v 5. količina izpustov dušikovih oksidov in v 6. stolpcu količina izpustov metana.
 
-Moj cilj je ugotoviti, katera od evropskih držav ima največje količine zračnih emisij.
+Moj cilj je ugotoviti, katera od evropskih držav ima največje količine zračnih emisij in ali se je količina le-teh glede na to, da se veliko ukvarjamo z okoljsko problematiko, kaj zmanjšala, kje se je količina zračnih emisij zmanjšala najbolj in če se je kje morebiti tudi povečala.
 
 ## Program
 
