@@ -5,13 +5,25 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2016/17.
 
 ## Analiza zračnih emisij v evropskih državah.
 
-Analizirala bom količine zračnih emisij posameznih evropskih držav med letoma 2008 in 2014. Analizirala bom, kako je s količino izpustov ogljikovega dioksida, dušikovih oksidov in metana po posameznih državah, primerjala, v kateri državi je posameznih in skupnih izpustov največ ter katera država ima največjo količino izpustov plinov v ozračje glede na njeno površino.
+Analizirala bom količine zračnih emisij posameznih evropskih držav med letoma 2008 in 2014. Primerjala bom količino izpustov ogljikovega dioksida, didušikovega oksida, dušikovega monoksida in metana po posameznih državah. Analizirala bom, v kateri državi je teh izpustov največ ter katera država ima največjo količino izpustov plinov v ozračje glede na njeno površino.
 
-Podatke bom večinoma pridobila iz Eurostata (http://ec.europa.eu/eurostat/data/database) in nekaj iz Wikipedie (https://en.wikipedia.org/wiki/List_of_European_countries_by_area). Datoteke bodo oblike .csv in HTML.
+Podatke bom pridobila iz Eurostata (http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=env_ac_ainah_r2&lang=en) v obliki .csv in iz Wikipedie (https://en.wikipedia.org/wiki/List_of_European_countries_by_area) v obliki HTML.
 
-Pridobljene podatke bom predstavila v tabeli, kjer bo v 1. stolpcu navedena država, v 2. stolpcu leto, v 3. količina izpustov glede na površino države, v 4. količina izpustov ogljikovega dioksida, v 5. količina izpustov dušikovih oksidov in v 6. stolpcu količina izpustov metana.
+Pridobljene podatke bom predstavila v dveh tabelah in sicer:
 
-Moj cilj je ugotoviti, katera od evropskih držav ima največje količine zračnih emisij in ali se je količina le-teh glede na to, da se veliko ukvarjamo z okoljsko problematiko, kaj zmanjšala, kje se je količina zračnih emisij zmanjšala najbolj in če se je kje morebiti tudi povečala.
+Tabela 1:
+•	1. stolpec: država
+•	2. stolpec: leto
+•	3. stolpec: tip izpusta
+•	4. stolpec: količina izpusta glede na površino države
+
+V stolpcu tip izpusta bo možna vrednost ogljikov dioksid, didušikov oksid, dušikov monoksid ali metan.
+
+Tabela 2:
+•	1. stolpec: država
+•	2. stolpec: površina
+
+Moj cilj je ugotoviti, katera od evropskih držav ima največje količine zračnih emisij, ali se je količina le-teh glede na to, da se veliko ukvarjamo z okoljsko problematiko, kaj zmanjšala, kje se je količina zračnih emisij zmanjšala najbolj in če se je kje morebiti tudi povečala.
 
 ## Program
 
