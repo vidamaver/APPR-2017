@@ -33,10 +33,13 @@ tabela2 <- read_csv(file = "podatki/Zracne_emisije_po_drzavah.csv", skip = 88, l
 colnames(tabela2) <- c("leto", "drzava", "tip_izpusta", "podrocje_industrije","enota", "kolicina_v_tonah")
 tabela2$enota <- NULL
 
-library(reshape2)
-tabela2 <- melt(Total - all NACE activities.rm = TRUE)
+tabela2 <- tabela2 %>% filter(podrocje_industrije != "Total - all NACE activities")
+
+#library(reshape2)
+#tabela2 <- melt(TotalallNACEactivities.rm = TRUE)
 
 #tabela2[ , 1:88] <- list(NULL)
+
 #tabela2 <- tabela2[-c(), ]
 #tabela2 <- tabela2[-c(), ]
 #tabela2 <- tabela2[-c(), ]
