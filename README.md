@@ -25,7 +25,7 @@ Tabela 1: Zracne_emisije_po_drzavah
 
 V stolpcu tip izpusta bo možna vrednost ogljikov dioksid, didušikov oksid, dušikov monoksid ali metan.
 
-Tabela 2: Tabela_površin
+Tabela 2: Tabela_povrsin
 
 •	1. stolpec: država
 
