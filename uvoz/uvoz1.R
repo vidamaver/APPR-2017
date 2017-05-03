@@ -19,13 +19,15 @@ tabela_povrsin$opis <- NULL
 
 tabela_povrsin <- tabela_povrsin[-c(49), ]
 
+#View(tabela_povrsin)
+#summary(tabela_povrsin)
+
 #===================================================================
 
 colnames(Zracne_emisije_po_drzavah) <- c("leto", "drzava", "tip_izpusta", "podrocje_industrije", "enota", "kolicina_v_tonah")
 
 Zracne_emisije_po_drzavah$enota <- NULL
 
-View(tabela_povrsin)
-
-View(Zracne_emisije_po_drzavah)
+#View(Zracne_emisije_po_drzavah)
+#summary(Zracne_emisije_po_drzavah)
 
