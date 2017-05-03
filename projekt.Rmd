@@ -17,33 +17,32 @@ runtime: shiny
 
 # Uvoz vseh potrebnih knjižnic
 source("lib/libraries.r", encoding = "UTF-8")
-```
+library(readr)
+library(knitr)
+library(ggplot2)
+library(shiny)
+library(rmarkdown)
+library(dplyr)
 
 # Izbira teme
 
-V svojem projektu pri predmetu Analiza podatkov s programom R analiziram količine zračnih emisij v evropskih državah.
-
-Prikazala bom dve tabeli in sicer:
-
-V prvi tabeli je po posameznih letih prikazana količina tipa določenega izpusta po državah (v tonah) v posamezni veji industrije. Merjeni tipi izpusta so ogljikov dioksid, didušikov oksid, dušikov monoksid in metan. Za vsako državo je prikazana tudi količina določenega tipa izpusta v vseh panogah industrije skupaj.
-
-V drugi tabeli pa je prikaz držav in njihovih površin, merjenih v kvadratnih kilometrih.
-
-***
+V svojem projektu pri predmetu Analiza podatkov s programom R bom analizirala količine zračnih emisij v evropskih državah od leta 2008 do leta 2014. Primerjala bom količino tipa določenega izpusta po državah (v tonah) v posameznih vejah industrije. Merjeni tipi izpusta so ogljikov dioksid, didušikov oksid, dušikov monoksid in metan. Primerjala pa bom tudi količine teh izpustov glede na površino posamezne države.
 
 # Obdelava, uvoz in čiščenje podatkov
 
 ```{r uvoz, echo=FALSE, message=FALSE}
-source("uvoz/uvoz1.r", encoding = "UTF-8")
+source("uvoz/uvoz1.R", encoding = "UTF-8")
 ```
 
 Podatke o zračnih emisijah evropskih držav sem uvozila v obliki CSV z Eurostata, podatke o površinah držav pa v obliki HTML z Wikipedije.
 
-Poglejmo si začetek prve uvožene razpredelnice.
+Poglejmo si začetke obeh uvoženih razpredelnic.
 
 ```{r razpredelnice}
-kable(head(Zracne_emisije_po_drzavah))
-head(Zracne_emisije_po_drzavah)
+kable(head(tabela2))
+head(tabela2)
+kable(head(tabela_povrsin))
+head(tabela_povrsin)
 ```
 
 Slika \ref{fig:histogram} prikazuje porazdelitev števila naselij v občinah.

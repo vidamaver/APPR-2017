@@ -35,16 +35,6 @@ tabela2$enota <- NULL
 
 tabela2 <- tabela2 %>% filter(podrocje_industrije != "Total - all NACE activities")
 
-#library(reshape2)
-#tabela2 <- melt(TotalallNACEactivities.rm = TRUE)
-
-#tabela2[ , 1:88] <- list(NULL)
-
-#tabela2 <- tabela2[-c(), ]
-#tabela2 <- tabela2[-c(), ]
-#tabela2 <- tabela2[-c(), ]
-#tabela2 <- tabela2[-c(), ]
-
 View(tabela2)
 #summary(tabela2)
 
