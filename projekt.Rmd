@@ -17,13 +17,7 @@ runtime: shiny
 
 # Uvoz vseh potrebnih knjižnic
 source("lib/libraries.r", encoding = "UTF-8")
-library(readr)
-library(knitr)
-library(ggplot2)
-library(shiny)
-library(rmarkdown)
-library(dplyr)
-
+```
 # Izbira teme
 
 V svojem projektu pri predmetu Analiza podatkov s programom R bom analizirala količine zračnih emisij v evropskih državah od leta 2008 do leta 2014. Primerjala bom količino tipa določenega izpusta po državah (v tonah) v posameznih vejah industrije. Merjeni tipi izpusta so ogljikov dioksid, didušikov oksid, dušikov monoksid in metan. Primerjala pa bom tudi količine teh izpustov glede na površino posamezne države.
