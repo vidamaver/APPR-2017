@@ -21,22 +21,29 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+V svojem projektu pri predmetu Analiza podatkov s programom R analiziram količine zračnih emisij v evropskih državah.
+
+Prikazala bom dve tabeli in sicer:
+
+V prvi tabeli je po posameznih letih prikazana količina tipa določenega izpusta po državah (v tonah) v posamezni veji industrije. Merjeni tipi izpusta so ogljikov dioksid, didušikov oksid, dušikov monoksid in metan. Za vsako državo je prikazana tudi količina določenega tipa izpusta v vseh panogah industrije skupaj.
+
+V drugi tabeli pa je prikaz držav in njihovih površin, merjenih v kvadratnih kilometrih.
 
 ***
 
 # Obdelava, uvoz in čiščenje podatkov
 
 ```{r uvoz, echo=FALSE, message=FALSE}
-source("uvoz/uvoz.r", encoding = "UTF-8")
+source("uvoz/uvoz1.r", encoding = "UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Poglejmo si začetka obeh uvoženih razpredelnic.
+Podatke o zračnih emisijah evropskih držav sem uvozila v obliki CSV z Eurostata, podatke o površinah držav pa v obliki HTML z Wikipedije.
+
+Poglejmo si začetek prve uvožene razpredelnice.
 
 ```{r razpredelnice}
-kable(head(druzine))
-head(obcine)
+kable(head(Zracne_emisije_po_drzavah))
+head(Zracne_emisije_po_drzavah)
 ```
 
 Slika \ref{fig:histogram} prikazuje porazdelitev števila naselij v občinah.
