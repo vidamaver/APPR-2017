@@ -28,13 +28,15 @@ tabela_povrsin <- tabela_povrsin[-c(49), ]
 
 sl <- locale("sl", decimal_mark = ".", grouping_mark = ",")
 
-tabela2 <- read_csv(file = "podatki/Zracne_emisije_po_drzavah.csv", skip = 88, locale = sl, na = ":")
+tabela2 <- read_csv(file = "podatki/Zracne_emisije_po_drzavah.csv", locale = sl, na = ":") %>%
+  filter(GEO != "European Union (28 countries)") %>%
+  filter(NACE_R2 != "Total - all NACE activities")
 
 colnames(tabela2) <- c("leto", "drzava", "tip_izpusta", "podrocje_industrije","enota", "kolicina_v_tonah")
 tabela2$enota <- NULL
 
-tabela2 <- tabela2 %>% filter(podrocje_industrije != "Total - all NACE activities")
+#tabela2 <- tabela2 %>% filter(podrocje_industrije != "Total - all NACE activities")
 
-View(tabela2)
+#View(tabela2)
 #summary(tabela2)
 
