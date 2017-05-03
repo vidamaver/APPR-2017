@@ -1,6 +1,6 @@
 vvlink <- "https://en.wikipedia.org/wiki/List_of_European_countries_by_area"
 stran <- html_session(link) %>% read_html()
-tabela <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']")%>%
+tabela_povrsin <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']")%>%
   .[[1]] %>% html_table(dec = ".")
 
 library(rvest)
@@ -8,17 +8,21 @@ library(gsubfn)
 library(readr)
 library(dplyr)
 
-colnames(tabela) <- c("stevnik", "drzava", "povrsina(km^2)", "opis")
+colnames(tabela_povrsin) <- c("stevnik", "drzava", "povrsina_v_km^2", "opis")
 sl <- locale("sl", decimal_mark = ".")
-for (col in c("povrsina(km^2)")) {
-  tabela[[col]] <- parse_number(tabela[[col]], na = "-", locale = sl)
+for (col in c("povrsina_v_km^2")) {
+  tabela_povrsin[[col]] <- parse_number(tabela_povrsin[[col]], na = "-", locale = sl)
 }
 
-tabela$stevnik <- NULL
-tabela$opis <- NULL
+tabela_povrsin$stevnik <- NULL
+tabela_povrsin$opis <- NULL
+
+tabela_povrsin <- tabela_povrsin[-c(49), ]
+
+#===================================================================
 
 colnames(Zracne_emisije_po_drzavah_Data) <- c("leto", "drzava", "tip_izpusta", "podrocje_industrije", "enota", "kolicina_v_tonah")
 
 Zracne_emisije_po_drzavah_Data$enota <- NULL
-
+View(tabela_povrsin)
 #View(Zracne_emisije_po_drzavah_Data)
