@@ -1,4 +1,4 @@
-link <- "https://en.wikipedia.org/wiki/List_of_European_countries_by_area"
+vvlink <- "https://en.wikipedia.org/wiki/List_of_European_countries_by_area"
 stran <- html_session(link) %>% read_html()
 tabela <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']")%>%
   .[[1]] %>% html_table(dec = ".")
@@ -16,3 +16,9 @@ for (col in c("povrsina(km^2)")) {
 
 tabela$stevnik <- NULL
 tabela$opis <- NULL
+
+colnames(Zracne_emisije_po_drzavah_Data) <- c("leto", "drzava", "tip_izpusta", "podrocje_industrije", "enota", "kolicina_v_tonah")
+
+Zracne_emisije_po_drzavah_Data$enota <- NULL
+
+#View(Zracne_emisije_po_drzavah_Data)
