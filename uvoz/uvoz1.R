@@ -26,14 +26,11 @@ tabela_povrsin <- tabela_povrsin[-c(49), ]
 
 # Funkcija, ki uvozi podatke iz csv datotek v mapi "podatki"
 
-uvozi2 <- function() {
 
-tab2 <- read_csv2(file = "podatki/Zracne_emisije_po_drzavah.csv", 
-                  col_names = c("leto", "drzava", "tip_izpusta", "podrocje_industrije", "kolicina_v_tonah"),
-                  locale = locale(encoding = "Windows-1250"))
-}
+tabela2 <- read.csv(file = "podatki/Zracne_emisije_po_drzavah.csv", head = TRUE, sep = ",")
 
-tabela2 <- uvozi2()
+colnames(tabela2) <- c("leto", "drzava", "tip_izpusta", "podrocje_industrije","enota", "kolicina_v_tonah")
+tabela2$enota <- NULL
 
 View(tabela2)
 #summary(tabela2)
