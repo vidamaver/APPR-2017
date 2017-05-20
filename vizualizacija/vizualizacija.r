@@ -1,5 +1,8 @@
 # 3. faza: Vizualizacija podatkov
 
+library(ggplot2)
+library(dplyr)
+
 # Uvozimo zemljevid.
 zemljevid <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
                              "OB/OB", encoding = "Windows-1250")
