@@ -69,7 +69,7 @@ g2 = ggplot(tabela2 %>% filter(drzava %in% c("Slovenia", "Croatia")) %>% group_b
 
 g2 + xlab("leto") + ylab("kolicina_v_tonah") + ggtitle("Skupno_kolicinsko_spreminjanje_zracnih_emisij_po_drzavah")
 
-#g2 sedaj samo za SLO - rada bi za vse?
+#g2 sedaj samo za SLO - rada bi za 3 max in posebaj za 3 min
 
 #--------------------------------------------------------------------
 #spreminjanje količine posameznega tipa izpusta po vseh državah in vseh panogah skupaj, po letih

@@ -38,3 +38,107 @@ head(tabela2)
 kable(head(tabela_povrsin))
 head(tabela_povrsin)
 ```
+
+# Analiza in vizualizacija podatkov
+
+Na zemljevidu primerjam države po količini vseh izpustov od leta 2008 do leta 2014 skupaj in sicer glede na površino držav.
+Opomba: Malta ima daleč največji količnik med izpusti in površino, zato sem jo v izrisu zemljevida izpustila, da je med ostalimi odtenki lažje razlikovati.
+
+```
+evropa <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip",
+                  "ne_50m_admin_0_countries", encoding = "UTF-8") %>%
+  pretvori.zemljevid() %>% filter(continent == "Europe" | sovereignt %in% c("Turkey", "Cyprus"),
+                                  long > -30, sovereignt != "Russia")
+
+z = ggplot() + geom_polygon(data = left_join(evropa, izpusti.povrsina,
+                                         by = c("name_sort" = "drzava")) %>% filter(name_sort != "Malta"),
+                        aes(x = long, y = lat, group = group, fill = izpusti)) +
+  coord_map(xlim = c(-25, 40), ylim = c(32, 72))
+print(z)
+```
+Na črtnih grafih primerjam spreminjanje količin izpustov skozi leta za posamezno državo glede na njeno površino.
+
+```
+Koda še manjka.
+```
+
+Na naslednjih dveh črtnih grafih je prikazano spreminjanje v količini zračnih emisij posameznega tipa izpusta od leta 2008 do 2014. Ker je količinsko izpustov ogljikovega dioksida neprimerljivo več od ostalih treh, sem ga prikazala posebaj. 
+
+```
+g31 = ggplot(tabela2 %>% filter(tip_izpusta == "Carbon dioxide") %>%
+               group_by(leto) %>% summarise(kolicina = sum(kolicina_v_tonah, na.rm = TRUE))) +
+  aes(x = leto, y = kolicina) + geom_line() +
+  ggtitle("Izpusti ogljikovega dioksida") + xlab("") + ylab("")
+print(g3)
+
+g32 = ggplot(tabela2 %>% filter(tip_izpusta != "Carbon dioxide") %>% group_by(leto, tip_izpusta) %>%
+               summarise(izpusti = sum(kolicina_v_tonah, na.rm = TRUE)),
+             aes(x = leto, y = izpusti, color = tip_izpusta)) + geom_line() + 
+  ggtitle("Izpusti didušikovih oksidov, dušikovega monoksida in metana") + xlab("") + ylab("")
+print(g32)
+```
+Na naslednjih treh stolpčnih grafih, pa je prikazana količina zračnih emisij po panogah.Panoge sem razdelila na tri skupine zaradi lažje primerjave. Na prvem grafu so prikazane panoge, ki količino zračnih emisij povečujejo največ, na zadnjem grafu pa skupina tistih panog, ki jih povečujejo najmanj.
+
+```
+g41 = ggplot(panoge[1:3, ],
+            aes(x = podrocje_industrije, y = povprecni_izpusti)) + geom_bar(stat = "identity") +
+  scale_x_discrete(labels = c("Oskrba z elektriko, bencinom, paro", "Proizvodnja", "Transport in skladiščenje")) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+  ggtitle("Primerjava količin zračnih emisij po panogah_1") + xlab("") + ylab("")
+print(g41)
+
+g42 = ggplot(panoge[4:16, ],
+             aes(x = reorder(podrocje_industrije, -povprecni_izpusti), y = povprecni_izpusti)) + geom_bar(stat = "identity") +
+  scale_x_discrete(labels = c("Kmetijstvo, gozdarstvo, ribolov", "Veleprodaja, prodaja na drobno, popravila motornih vozil", 
+                              "Rudarstvo, kamnolom", "Gradbeništvo", "Oskrba z vodo, kanalizacija", "Javna uprava, obramba", 
+                              "Dejavnosti socialnega dela in varstva za človekove pravice", "Administracija, podporne storitve", 
+                              "Znanstvene in tehnične aktivnosti", "Izobraževanje", "Nastanitve, oskrba s hrano","Druge storitve", "Komunikacija")) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  ggtitle("Primerjava količin zračnih emisij po panogah_2") + xlab("") + ylab("")
+print(g42)
+
+g43 = ggplot(panoge[17:21, ],
+             aes(x = reorder(podrocje_industrije, -povprecni_izpusti), y = povprecni_izpusti)) +
+  geom_bar(stat = "identity") +
+  scale_x_discrete(labels = c("Aktivnosti povezane z nepremičninami", "Finančne in zavarovalne aktivnosti", 
+                              "Umetnost, zabava, rekreacija", "Dejavnosti gospodinjstev za lastno rabo", 
+                              "Dejavnosti ekstrateritorialnih organizacij")) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  ggtitle("Primerjava količin zračnih emisij po panogah_3")+ xlab("") + ylab("")
+print(g43)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
