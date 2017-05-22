@@ -49,6 +49,7 @@ Na zemljevidu primerjam države po količini vseh izpustov od leta 2008 do leta 
 Opomba: Malta ima daleč največji količnik med izpusti in površino, zato sem jo v izrisu zemljevida izpustila, da je med ostalimi odtenki lažje razlikovati.
 
 ```{r z, echo = FALSE, fig.align = 'center', fig.cap = 'Skupna količina zračnih emisij po državah'}
+z
 ```
 
 Na spodnjih črtnih grafih primerjam spreminjanje količin izpustov skozi leta za posamezno državo glede na njeno površino.Prikazanih je šest držav, ki imajo po vseh letih skupaj največjo količino izpustov glede na njeno površino, dodana pa je tudi Slovenija, da vidimo, kam se uvrščamo v primerjavi s tistimi državami, ki imajo izpustov največ. 
