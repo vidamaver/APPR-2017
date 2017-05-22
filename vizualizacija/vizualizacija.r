@@ -1,17 +1,5 @@
 # 3. faza: Vizualizacija podatkov
 
-# Uvozimo zemljevid.
-zemljevid <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
-                             "OB/OB", encoding = "Windows-1250")
-levels(zemljevid$OB_UIME) <- levels(zemljevid$OB_UIME) %>%
-{ gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
-zemljevid$OB_UIME <- factor(zemljevid$OB_UIME, levels = levels(obcine$obcina))
-zemljevid <- pretvori.zemljevid(zemljevid)
-
-# Izračunamo povprečno velikost družine
-povprecja <- druzine %>% group_by(obcina) %>%
-  summarise(povprecje = sum(velikost.druzine * stevilo.druzin) / sum(stevilo.druzin))
-
 library(ggplot2)
 library(dplyr)
 library(readr)
@@ -33,6 +21,7 @@ ggplot() + geom_polygon(data = evropa, aes(x = long, y = lat, group = group)) +
 tabela2$drzava <- gsub("Germany.*$", "Germany", tabela2$drzava) #moji podatki
 evropa$name_sort <- gsub("^Slovak Republic$", "Slovakia", evropa$name_sort) %>% factor() #zemljevid
 
+#dodani manjkajoči površini
 tabela_povrsin <- rbind(tabela_povrsin, data.frame(drzava = c("Turkey", "Cyprus"),
                                                    povrsina_v_km2 = c(783562.00, 9251.00)))
 
@@ -45,7 +34,7 @@ izpusti.povrsina <- tabela2 %>% group_by(drzava, leto) %>%
   transmute(drzava = factor(drzava, levels = levels(evropa$name_sort)),
             izpusti = kolicina / povrsina_v_km2)
 
-#vsote čez vse panoge za vsako leto
+#vsote čez vse panoge za vsako leto, nato izračunano povprečje teh vsot(ignoriram vrednosti NA)
 
 izpusti.podrocje <- tabela2 %>% group_by(leto, podrocje_industrije) %>%
    summarise(izpusti = sum(kolicina_v_tonah)) %>%
@@ -54,7 +43,8 @@ izpusti.podrocje <- tabela2 %>% group_by(leto, podrocje_industrije) %>%
 
 #izris zemljevida
 #Malta ima največji količnik med izpusti in površino - izločim jo iz podatkov
-ggplot() + geom_polygon(data = left_join(evropa, izpusti.povrsina,
+
+z = ggplot() + geom_polygon(data = left_join(evropa, izpusti.povrsina,
                                          by = c("name_sort" = "drzava")) %>% filter(name_sort != "Malta"),
                         aes(x = long, y = lat, group = group, fill = izpusti)) +
   coord_map(xlim = c(-25, 40), ylim = c(32, 72))
@@ -63,32 +53,30 @@ ggplot() + geom_polygon(data = left_join(evropa, izpusti.povrsina,
 #-----------------------------------------------------------------------------------------------------
 
 #spreminjanje količin izpustov skozi leta za posamezno državo (po vseh tipih in vseh industrijah)
-g2 = ggplot(tabela2 %>% filter(drzava %in% c("Slovenia", "Croatia")) %>% group_by(leto, drzava) %>%
-              summarise(izpusti = sum(kolicina_v_tonah)),
-            aes(x = leto, y = izpusti, color = drzava)) + geom_line()
+g2 = ggplot(tabela2 %>% filter(drzava %in% c("Slovenia", "Netherlands", "Luxembourg", "Belgium", "Germany", "Denmark", "United Kingdom")) %>% 
+              group_by(leto, drzava) %>%
+              summarise(izpusti = sum(kolicina_v_tonah)) %>%
+              inner_join(tabela_povrsin),
+            aes(x = leto, y = izpusti / povrsina_v_km2, color = drzava)) + geom_line()
 
-g2 + xlab("leto") + ylab("kolicina_v_tonah") + ggtitle("Skupno_kolicinsko_spreminjanje_zracnih_emisij_po_drzavah")
-
-#g2 sedaj samo za SLO - rada bi za 3 max in posebaj za 3 min
+#g2 + xlab("leto") + ylab("kolicina_v_tonah") + ggtitle("Skupno_kolicinsko_spreminjanje_zracnih_emisij_po_drzavah")
 
 #--------------------------------------------------------------------
 #spreminjanje količine posameznega tipa izpusta po vseh državah in vseh panogah skupaj, po letih
 
-#izpustov ogljikovega dioksida je neprimerno več od ostalih izpustov, zato ga prikažem posebaj (a je OK?)
+#izpustov ogljikovega dioksida je neprimerno več od ostalih izpustov, zato ga prikažem posebaj
 g31 = ggplot(tabela2 %>% filter(tip_izpusta == "Carbon dioxide") %>%
                group_by(leto) %>% summarise(kolicina = sum(kolicina_v_tonah, na.rm = TRUE))) +
   aes(x = leto, y = kolicina) + geom_line()
-
-#g31 ne dela kul
 
 #preostali izpusti prikazani na enem grafu
 g32 = ggplot(tabela2 %>% filter(tip_izpusta != "Carbon dioxide") %>% group_by(leto, tip_izpusta) %>%
                summarise(izpusti = sum(kolicina_v_tonah, na.rm = TRUE)),
              aes(x = leto, y = izpusti, color = tip_izpusta)) + geom_line()
+
 #pri uporabi zgornjega pazi, da so podatki še vedno primerljivi -
 # - (če bi kje manjkal podatek o kakšni državi, ki znatno vpliva na izpuste)
 
-#dušikovi oksidi ful nizko, dam posebaj?
 #---------------------------------------------------------------------
 #primerjava izpustov po panogah
 
