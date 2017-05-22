@@ -67,12 +67,12 @@ g2 = ggplot(tabela2 %>% filter(drzava %in% c("Slovenia", "Netherlands", "Luxembo
 #izpustov ogljikovega dioksida je neprimerno več od ostalih izpustov, zato ga prikažem posebaj
 g31 = ggplot(tabela2 %>% filter(tip_izpusta == "Carbon dioxide") %>%
                group_by(leto) %>% summarise(kolicina = sum(kolicina_v_tonah, na.rm = TRUE))) +
-  aes(x = leto, y = kolicina) + geom_line()
+  aes(x = leto, y = kolicina / 1e9) + geom_line()
 
 #preostali izpusti prikazani na enem grafu
 g32 = ggplot(tabela2 %>% filter(tip_izpusta != "Carbon dioxide") %>% group_by(leto, tip_izpusta) %>%
                summarise(izpusti = sum(kolicina_v_tonah, na.rm = TRUE)),
-             aes(x = leto, y = izpusti, color = tip_izpusta)) + geom_line()
+             aes(x = leto, y = izpusti / 1e6, color = tip_izpusta)) + geom_line()
 
 #pri uporabi zgornjega pazi, da so podatki še vedno primerljivi -
 # - (če bi kje manjkal podatek o kakšni državi, ki znatno vpliva na izpuste)
@@ -86,7 +86,7 @@ panoge <- tabela2 %>% group_by(leto, podrocje_industrije) %>%
   summarise(povprecni_izpusti = mean(izpusti)) %>% arrange(desc(povprecni_izpusti))
 
 g41 = ggplot(panoge[1:3, ],
-            aes(x = podrocje_industrije, y = povprecni_izpusti)) + geom_bar(stat = "identity") +
+            aes(x = podrocje_industrije, y = povprecni_izpusti/ 1e9)) + geom_bar(stat = "identity") +
   scale_x_discrete(labels = c("Oskrba z elektriko, bencinom, paro", "Proizvodnja", "Transport in skladiščenje")) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
@@ -97,7 +97,7 @@ g41 = ggplot(panoge[1:3, ],
 #           "Dejavnosti gospodinjstev za lastno rabo", "Dejavnosti ekstrateritorialnih organizacij")
 
 g42 = ggplot(panoge[4:16, ],
-             aes(x = reorder(podrocje_industrije, -povprecni_izpusti), y = povprecni_izpusti)) + geom_bar(stat = "identity") +
+             aes(x = reorder(podrocje_industrije, -povprecni_izpusti), y = povprecni_izpusti / 1e6)) + geom_bar(stat = "identity") +
   scale_x_discrete(labels = c("Kmetijstvo, gozdarstvo, ribolov", "Veleprodaja, prodaja na drobno, popravila motornih vozil", 
                               "Rudarstvo, kamnolom", "Gradbeništvo", "Oskrba z vodo, kanalizacija", "Javna uprava, obramba", 
                               "Dejavnosti socialnega dela in varstva za človekove pravice", "Administracija, podporne storitve", 
@@ -105,7 +105,7 @@ g42 = ggplot(panoge[4:16, ],
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 g43 = ggplot(panoge[17:21, ],
-             aes(x = reorder(podrocje_industrije, -povprecni_izpusti), y = povprecni_izpusti)) +
+             aes(x = reorder(podrocje_industrije, -povprecni_izpusti), y = povprecni_izpusti / 1e6)) +
   geom_bar(stat = "identity") +
   scale_x_discrete(labels = c("Aktivnosti povezane z nepremičninami", "Finančne in zavarovalne aktivnosti", 
                               "Umetnost, zabava, rekreacija", "Dejavnosti gospodinjstev za lastno rabo", 
