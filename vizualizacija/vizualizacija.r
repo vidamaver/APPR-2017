@@ -14,8 +14,8 @@ povprecja <- druzine %>% group_by(obcina) %>%
 
 library(ggplot2)
 library(dplyr)
-#library(readr)
-#library(tibble)
+library(readr)
+library(tibble)
 
 #--------------------------------------------------------------------
 zdruzena_tabela <- rbind(tabela2, tabela_povrsin)
@@ -25,7 +25,7 @@ evropa <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturaleart
   pretvori.zemljevid() %>% filter(continent == "Europe" | sovereignt %in% c("Turkey", "Cyprus"),
                                   long > -30)
 
-#kako izpustim Rusijo?
+#kako izpustim Rusijo (podatkov nimam in je ne rabim)?
 
 #prikaz zemljevida brez podatkov
 ggplot() + geom_polygon(data = evropa, aes(x = long, y = lat, group = group)) + 
@@ -41,9 +41,17 @@ izpusti.povrsina <- tabela2 %>% group_by(drzava) %>%
   transmute(drzava = factor(drzava, levels = levels(evropa$name_sort)),
             izpusti = kolicina / povrsina_v_km2)
 
-#dodaj podatka o površini
+#dodaj podatka o površini (a je OK?)
 
-#vsote čez vse panoge za vsako leto
+tabela_povrsin <- rbind(tabela_povrsin, "Turkey" = 783562.00)
+tabela_povrsin <- rbind(tabela_povrsin, "Cyprus" = 9251.00)
+
+#vsote čez vse panoge za vsako leto (a je OK?)
+
+tabela2 %>% group_by(leto, podrocje_industrije) %>%
+         summarise(izpusti = sum(kolicina_v_tonah, na.rm = TRUE)) %>%
+         group_by(podrocje_industrije) %>%
+         summarise(povprecni_izpusti = mean(izpusti), na.rm = TRUE)
 
 #izris zemljevida
 ggplot() + geom_polygon(data = left_join(evropa, izpusti.povrsina,
@@ -51,7 +59,8 @@ ggplot() + geom_polygon(data = left_join(evropa, izpusti.povrsina,
                         aes(x = long, y = lat, group = group, fill = izpusti)) +
   coord_map(xlim = c(-25, 40), ylim = c(32, 72))
 
-#Malta ima največji količnik med izpusti in površino - izločim jo iz podatkov
+#Malta ima največji količnik med izpusti in površino - izločim jo iz podatkov (a je OK?)
+tabela2 %>% filter(GEO != "Malta")
 
 #-----------------------------------------------------------------------------------------------------
 
@@ -65,7 +74,7 @@ g2 + xlab("leto") + ylab("kolicina_v_tonah") + ggtitle("Skupno_kolicinsko_spremi
 #--------------------------------------------------------------------
 #spreminjanje količine posameznega tipa izpusta po vseh država in vseh panogah skupaj, po letih
 
-#izpustov ogljikovega dioksida je neprimerno več od ostalih izpustov, zato ga prikažem posebaj
+#izpustov ogljikovega dioksida je neprimerno več od ostalih izpustov, zato ga prikažem posebaj (a je OK?)
 g31 = ggplot(tabela2 %>% filter(tip_izpusta = "Carbon dioxide")) + aes(x = leto, y = kolicina_v_tonah) + geom_line()
 
 #preostali izpusti prikazani na enem grafu
