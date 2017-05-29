@@ -20,7 +20,7 @@ source("lib/libraries.r", encoding = "UTF-8")
 ```
 # Izbira teme
 
-V svojem projektu pri predmetu Analiza podatkov s programom R bom analizirala količine zračnih emisij v evropskih državah od leta 2008 do leta 2014. Primerjala bom količino tipa določenega izpusta po državah (v tonah) v posameznih vejah industrije. Merjeni tipi izpusta so ogljikov dioksid, didušikov oksid, dušikov monoksid in metan. Primerjala pa bom tudi količine teh izpustov glede na površino posamezne države.
+V svojem projektu pri predmetu Analiza podatkov s programom R bom analizirala količine zračnih emisij v evropskih državah od leta 2008 do leta 2014. Primerjala bom količino tipa določenega izpusta po državah po posameznih vejah industrije. Merjeni tipi izpusta so ogljikov dioksid, didušikov oksid, dušikov monoksid in metan. Analizirala bom, kako se je spreminjala količina posameznega tipa zračnih emisij po letih, v kateri državi je največ skupnih izpustov glede na površino države, katere panoge k onesnaževanju pripomorejo največ ter kako se je spreminjala količina posameznega tipa zračnih emisij po letih.
 
 # Obdelava, uvoz in čiščenje podatkov
 
@@ -58,7 +58,7 @@ Na spodnjih črtnih grafih primerjam spreminjanje količin izpustov skozi leta z
 g2 + xlab("leto") + ylab("količina v tonah")
 ```
 
-Na naslednjih dveh črtnih grafih je prikazano spreminjanje v količini zračnih emisij posameznega tipa izpusta od leta 2008 do 2014. Ker je količinsko izpustov ogljikovega dioksida neprimerljivo več od ostalih treh, sem ga prikazala posebaj. 
+Na naslednjih dveh črtnih grafih je prikazano spreminjanje v količini zračnih emisij posameznega tipa izpusta od leta 2008 do 2014. Ker je količinsko izpustov ogljikovega dioksida neprimerljivo več od ostalih treh, sem ga prikazala posebej. 
 
 ```{r g31, echo = FALSE, fig.align = 'center', fig.cap = 'Skupno količinsko spreminjanje zračnih emisij ogljikovega dioksida'}
 g31 + xlab("leto") + ylab("količina v milijardah ton")
@@ -68,7 +68,7 @@ g31 + xlab("leto") + ylab("količina v milijardah ton")
 g32 + xlab("leto") + ylab("količina v milijonih ton")
 ```
 
-Na naslednjih treh stolpčnih grafih, pa je prikazana količina zračnih emisij po panogah.Panoge sem razdelila na tri skupine zaradi lažje primerjave. Na prvem grafu so prikazane panoge, ki količino zračnih emisij povečujejo največ, na zadnjem grafu pa skupina tistih panog, ki jih povečujejo najmanj.
+Na naslednjih treh stolpčnih grafih, pa je prikazana celotna količina zračnih emisij po panogah v vseh letih skupaj.Panoge sem razdelila na tri skupine zaradi lažje primerjave. Na prvem grafu so prikazane panoge, ki količino zračnih emisij povečujejo največ, na zadnjem grafu pa skupina tistih panog, ki jih povečujejo najmanj.
 
 ```{r g41, echo = FALSE, fig.align = 'center', fig.cap = 'Primerjava količin zračnih emisij po panogah 1'}
 g41 + xlab("panoga") + ylab("količina v milijardah ton")
