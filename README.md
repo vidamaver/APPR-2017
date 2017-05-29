@@ -5,13 +5,13 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2016/17.
 
 ## Analiza zračnih emisij v evropskih državah.
 
-Analizirala bom količine zračnih emisij posameznih evropskih držav med letoma 2008 in 2014. Primerjala bom količino izpustov ogljikovega dioksida, didušikovega oksida, dušikovega monoksida in metana po posameznih državah. Analizirala bom, v kateri državi je teh izpustov največ ter katera država ima največjo količino izpustov plinov v ozračje glede na njeno površino.
+Analizirala bom količine zračnih emisij v posameznih evropskih državah med letoma 2008 in 2014. Primerjala bom količine izpustov ogljikovega dioksida, didušikovega oksida, dušikovega monoksida in metana po posameznih državah v posameznih industrijskih panogah. Analizirala bom, v kateri državi je največ skupnih izpustov glede na površino države, katere panoge k onesnaževanju pripomorejo največ ter kako se je spreminjala količina posameznega tipa zračnih emisij po letih.
 
 Podatke bom pridobila iz Eurostata (http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=env_ac_ainah_r2&lang=en) v obliki .csv in iz Wikipedie (https://en.wikipedia.org/wiki/List_of_European_countries_by_area) v obliki HTML.
 
 Pridobljene podatke bom predstavila v dveh tabelah in sicer:
 
-Tabela 1: Zracne_emisije_po_drzavah
+Tabela 1: 
 
 •	1. stolpec: leto
 
