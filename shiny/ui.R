@@ -2,16 +2,17 @@ library(shiny)
 
 shinyUI(fluidPage(
   
-  titlePanel("Slovenske občine"),
+  titlePanel("Zračne emisije po državah"),
   
   tabsetPanel(
-      tabPanel("Velikost družine",
-               DT::dataTableOutput("druzine")),
+      tabPanel("leto",
+               DT::dataTableOutput("Leta")),
       
-      tabPanel("Število naselij",
+      tabPanel("izpusti",
                sidebarPanel(
-                  uiOutput("pokrajine")
+                  uiOutput("Izpusti po letih")
                 ),
-               mainPanel(plotOutput("naselja")))
+               mainPanel(plotOutput("drzava")))
     )
+  + plotOutput$drzava
 ))

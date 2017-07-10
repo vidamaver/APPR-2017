@@ -37,6 +37,7 @@ izpusti.povrsina <- tabela2 %>% group_by(drzava, leto) %>%
   transmute(drzava = factor(drzava, levels = levels(evropa$name_sort)),
             izpusti = kolicina / povrsina_v_km2)
 
+
 #vsote čez vse panoge za vsako leto, nato izračunano povprečje teh vsot(ignoriram vrednosti NA)
 
 izpusti.podrocje <- tabela2 %>% group_by(leto, podrocje_industrije) %>%
