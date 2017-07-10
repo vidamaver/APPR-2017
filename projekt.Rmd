@@ -88,7 +88,10 @@ g42 + xlab("panoga") + ylab("količina v milijonih ton")
 g43 + xlab("panoga") + ylab("količina v milijonih ton")
 ```
 
+```{r shiny, echo = FALSE}
++ shinyAppDir("shiny", options = list(width="100%", height = 600))
 
+```
 
 
 

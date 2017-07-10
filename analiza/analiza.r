@@ -9,3 +9,6 @@ podatki$obcina <- NULL
 # Število skupin
 n <- 5
 skupine <- hclust(dist(scale(podatki))) %>% cutree(n)
+
+
+  
