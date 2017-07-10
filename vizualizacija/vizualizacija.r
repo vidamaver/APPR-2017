@@ -63,13 +63,25 @@ g1 = ggplot(tabela2 %>% filter(drzava %in% c("Malta")) %>%
 
 
 #spreminjanje količin izpustov skozi leta za posamezno državo (po vseh tipih in vseh industrijah)
+
+#slovar za preimenovanje v slovenščino
+
+slovar1 <- c("Slovenia" = "Slovenija",
+             "Netherlands" = "Nizozemska",
+             "Luxembourg" = "Luksemburg",
+             "Belgium" = "Belgija",
+             "Germany" = "Nemčija",
+             "Denmark" = "Danska",
+             "United Kingdom" = "Velika Britanija")
+
+
 g2 = ggplot(tabela2 %>% filter(drzava %in% c("Slovenia", "Netherlands", "Luxembourg", "Belgium", "Germany", "Denmark", "United Kingdom")) %>% 
               group_by(leto, drzava) %>%
               summarise(izpusti = sum(kolicina_v_tonah)) %>%
               inner_join(tabela_povrsin),
-            aes(x = leto, y = izpusti / povrsina_v_km2, color = drzava)) + geom_line()
+            aes(x = leto, y = izpusti / povrsina_v_km2, color = slovar1[drzava])) + geom_line() +
+  guides(color = guide_legend(title = "Država")) + ylab("izpusti v tonah")
 
-#g2 + xlab("leto") + ylab("kolicina_v_tonah") + ggtitle("Skupno_kolicinsko_spreminjanje_zracnih_emisij_po_drzavah")
 
 #--------------------------------------------------------------------
 #spreminjanje količine posameznega tipa izpusta po vseh državah in vseh panogah skupaj, po letih
@@ -83,14 +95,14 @@ g31 = ggplot(tabela2 %>% filter(tip_izpusta == "Carbon dioxide") %>%
 
 #preimenovanje v slovenščino 
 
-slovar <- c("Methane" = "Metan",
+slovar2 <- c("Methane" = "Metan",
             "Nitrogen oxides" = "Dušikov monoksid",
             "Nitrous oxide" = "Didušikov oksid")
 
 g32 = ggplot(tabela2 %>% filter(tip_izpusta != "Carbon dioxide") %>% 
                group_by(leto, tip_izpusta) %>%
                summarise(izpusti = sum(kolicina_v_tonah, na.rm = TRUE)),
-             aes(x = leto, y = izpusti / 1e6, color = slovar[tip_izpusta])) + geom_line() +
+             aes(x = leto, y = izpusti / 1e6, color = slovar2[tip_izpusta])) + geom_line() +
   guides(color = guide_legend(title = "Tip izpusta")) + ylab("izpusti v milijonih ton")
 
 #---------------------------------------------------------------------
