@@ -40,3 +40,11 @@ tabela2$enota <- NULL
 #View(tabela2)
 #summary(tabela2)
 
+#dodani manjkajoči površini
+tabela_povrsin <- rbind(tabela_povrsin, data.frame(drzava = c("Turkey", "Cyprus"),
+                                                   povrsina_v_km2 = c(783562.00, 9251.00)))
+
+#odstranim države z zvezdico
+
+tabela_povrsin <- tabela_povrsin %>% filter(! grepl("[*]", drzava))
+

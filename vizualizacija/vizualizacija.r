@@ -22,14 +22,6 @@ ggplot() + geom_polygon(data = evropa, aes(x = long, y = lat, group = group)) +
 tabela2$drzava <- gsub("Germany.*$", "Germany", tabela2$drzava) #moji podatki
 evropa$name_sort <- gsub("^Slovak Republic$", "Slovakia", evropa$name_sort) %>% factor() #zemljevid
 
-#dodani manjkajoči površini
-tabela_povrsin <- rbind(tabela_povrsin, data.frame(drzava = c("Turkey", "Cyprus"),
-                                                   povrsina_v_km2 = c(783562.00, 9251.00)))
-
-#odstranim države z zvezdico
-
-tabela_povrsin <- tabela_povrsin %>% filter(! grepl("[*]", drzava))
-
 #poračun skupnih izpustov na površino
 izpusti.povrsina <- tabela2 %>% group_by(drzava, leto) %>%
   summarise(kolicina = sum(kolicina_v_tonah)) %>%
