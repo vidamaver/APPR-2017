@@ -51,6 +51,13 @@ z = ggplot() + geom_polygon(data = left_join(evropa, izpusti.povrsina,
 
 
 #-----------------------------------------------------------------------------------------------------
+#spreminjanje količin izpustov skozi leta v Malti (po vseh tipih in vseh industrijah)
+g1 = ggplot(tabela2 %>% filter(drzava %in% c("Malta")) %>%
+              group_by(leto, drzava) %>%
+              summarise(izpusti = sum(kolicina_v_tonah)) %>%
+              inner_join(tabela_povrsin),
+            aes(x = leto, y = izpusti/povrsina_v_km2)) + geom_line(col = "green")
+
 
 #spreminjanje količin izpustov skozi leta za posamezno državo (po vseh tipih in vseh industrijah)
 g2 = ggplot(tabela2 %>% filter(drzava %in% c("Slovenia", "Netherlands", "Luxembourg", "Belgium", "Germany", "Denmark", "United Kingdom")) %>% 
@@ -72,10 +79,9 @@ g31 = ggplot(tabela2 %>% filter(tip_izpusta == "Carbon dioxide") %>%
 #preostali izpusti prikazani na enem grafu
 g32 = ggplot(tabela2 %>% filter(tip_izpusta != "Carbon dioxide") %>% group_by(leto, tip_izpusta) %>%
                summarise(izpusti = sum(kolicina_v_tonah, na.rm = TRUE)),
-             aes(x = leto, y = izpusti / 1e6, color = tip_izpusta)) + geom_line()
-
-#pri uporabi zgornjega pazi, da so podatki še vedno primerljivi -
-# - (če bi kje manjkal podatek o kakšni državi, ki znatno vpliva na izpuste)
+             aes(x = leto, y = izpusti / 1e6, color = tip_izpusta)) + geom_line() + 
+  scale_fill_discrete(breaks = c("Methane", "Nitrogen oxides", "Nitrous oxide"),
+                      labels = c("Metan", "Dušikov monoksid", "Didušikov oksid"))
 
 #---------------------------------------------------------------------
 #primerjava izpustov po panogah

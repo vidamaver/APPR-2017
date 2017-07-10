@@ -58,7 +58,13 @@ Na spodnjih črtnih grafih primerjam spreminjanje količin izpustov skozi leta z
 g2 + xlab("leto") + ylab("količina v tonah")
 ```
 
-Na naslednjih dveh črtnih grafih je prikazano spreminjanje količine zračnih emisij posameznega tipa izpusta od leta 2008 do leta 2014. Ker je količinsko izpustov ogljikovega dioksida neprimerljivo več od ostalih treh, sem le-te prikazala posebej. 
+Glede na to, da ima Malta zelo velik količnik med izpusti in površino, je na spodnjem grafu prikazano še spreminjanje količin izpustov skozi leta le za to državo. Opazimo precejšen porast med letoma 2008 in 2010.
+
+```{r g1, echo = FALSE, fig.align = 'center', fig.cap = 'Zračne emisije v Malti'}
+g1 + xlab("leto") + ylab("količina v tonah")
+```
+
+Na naslednjih dveh črtnih grafih je prikazano spreminjanje količine zračnih emisij posameznega tipa izpusta od leta 2008 do leta 2014. Ker je količinsko izpustov ogljikovega dioksida neprimerljivo več od ostalih treh, sem le-te prikazala posebej. Opazimo trend padanja vseh količin izpustov, predvsem pa je ta padec očiten pri ogljikovem dioksidu, ki pa je najbolj prisoten pri onesnaževanju. 
 
 ```{r g31, echo = FALSE, fig.align = 'center', fig.cap = 'Zračne emisije ogljikovega dioksida'}
 g31 + xlab("leto") + ylab("količina v milijardah ton")
