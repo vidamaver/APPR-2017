@@ -48,37 +48,37 @@ source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 Na zemljevidu primerjam države po količini vseh izpustov od leta 2008 do leta 2014 skupaj in sicer glede na površino držav.
 Opomba: Malta ima daleč največji količnik med izpusti in površino, zato sem jo v izrisu zemljevida izpustila, da je med ostalimi odtenki lažje razlikovati.
 
-```{r z, echo = FALSE, fig.align = 'center', fig.cap = 'Skupna količina zračnih emisij po državah'}
+```{r z, echo = FALSE, fig.align = 'center', fig.cap = 'Količina zračnih emisij po državah'}
 z
 ```
 
 Na spodnjih črtnih grafih primerjam spreminjanje količin izpustov skozi leta za posamezno državo glede na njeno površino.Prikazanih je šest držav, ki imajo po vseh letih skupaj največjo količino izpustov glede na njeno površino, dodana pa je tudi Slovenija, da vidimo, kam se uvrščamo v primerjavi s tistimi državami, ki imajo izpustov največ. 
 
-```{r g2, echo = FALSE, fig.align = 'center', fig.cap = 'Skupno količinsko spreminjanje zračnih emisij po državah'}
+```{r g2, echo = FALSE, fig.align = 'center', fig.cap = 'Spremembe zračnih emisij po državah'}
 g2 + xlab("leto") + ylab("količina v tonah")
 ```
 
-Na naslednjih dveh črtnih grafih je prikazano spreminjanje v količini zračnih emisij posameznega tipa izpusta od leta 2008 do 2014. Ker je količinsko izpustov ogljikovega dioksida neprimerljivo več od ostalih treh, sem ga prikazala posebej. 
+Na naslednjih dveh črtnih grafih je prikazano spreminjanje količine zračnih emisij posameznega tipa izpusta od leta 2008 do leta 2014. Ker je količinsko izpustov ogljikovega dioksida neprimerljivo več od ostalih treh, sem le-te prikazala posebej. 
 
-```{r g31, echo = FALSE, fig.align = 'center', fig.cap = 'Skupno količinsko spreminjanje zračnih emisij ogljikovega dioksida'}
+```{r g31, echo = FALSE, fig.align = 'center', fig.cap = 'Zračne emisije ogljikovega dioksida'}
 g31 + xlab("leto") + ylab("količina v milijardah ton")
 ```
 
-```{r g32, echo = FALSE, fig.align = 'center', fig.cap = 'Skupno količinsko spreminjanje zračnih emisij didušikovih oksidov, dušikovega monoksida in metana'}
+```{r g32, echo = FALSE, fig.align = 'center', fig.cap = 'Zračne emisije didušikovih oksidov, dušikovega monoksida in metana'}
 g32 + xlab("leto") + ylab("količina v milijonih ton")
 ```
 
 Na naslednjih treh stolpčnih grafih, pa je prikazana celotna količina zračnih emisij po panogah v vseh letih skupaj.Panoge sem razdelila na tri skupine zaradi lažje primerjave. Na prvem grafu so prikazane panoge, ki količino zračnih emisij povečujejo največ, na zadnjem grafu pa skupina tistih panog, ki jih povečujejo najmanj.
 
-```{r g41, echo = FALSE, fig.align = 'center', fig.cap = 'Primerjava količin zračnih emisij po panogah 1'}
+```{r g41, echo = FALSE, fig.align = 'center', fig.cap = 'Primerjava zračnih emisij po panogah 1'}
 g41 + xlab("panoga") + ylab("količina v milijardah ton")
 ```
 
-```{r g42, echo = FALSE, fig.align = 'center', fig.cap = 'Primerjava količin zračnih emisij po panogah 2'}
+```{r g42, echo = FALSE, fig.align = 'center', fig.cap = 'Primerjava zračnih emisij po panogah 2'}
 g42 + xlab("panoga") + ylab("količina v milijonih ton")
 ```
 
-```{r g43, echo = FALSE, fig.align = 'center', fig.cap = 'Primerjava količin zračnih emisij po panogah 3'}
+```{r g43, echo = FALSE, fig.align = 'center', fig.cap = 'Primerjava zračnih emisij po panogah 3'}
 g43 + xlab("panoga") + ylab("količina v milijonih ton")
 ```
 
