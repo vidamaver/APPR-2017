@@ -26,7 +26,9 @@ evropa$name_sort <- gsub("^Slovak Republic$", "Slovakia", evropa$name_sort) %>% 
 tabela_povrsin <- rbind(tabela_povrsin, data.frame(drzava = c("Turkey", "Cyprus"),
                                                    povrsina_v_km2 = c(783562.00, 9251.00)))
 
+#odstranim države z zvezdico
 
+tabela_povrsin <- tabela_povrsin %>% filter(! grepl("[*]", drzava))
 
 #poračun skupnih izpustov na površino
 izpusti.povrsina <- tabela2 %>% group_by(drzava, leto) %>%
@@ -78,11 +80,18 @@ g31 = ggplot(tabela2 %>% filter(tip_izpusta == "Carbon dioxide") %>%
   aes(x = leto, y = kolicina / 1e9) + geom_line(col = "blue")
 
 #preostali izpusti prikazani na enem grafu
-g32 = ggplot(tabela2 %>% filter(tip_izpusta != "Carbon dioxide") %>% group_by(leto, tip_izpusta) %>%
+
+#preimenovanje v slovenščino 
+
+slovar <- c("Methane" = "Metan",
+            "Nitrogen oxides" = "Dušikov monoksid",
+            "Nitrous oxide" = "Didušikov oksid")
+
+g32 = ggplot(tabela2 %>% filter(tip_izpusta != "Carbon dioxide") %>% 
+               group_by(leto, tip_izpusta) %>%
                summarise(izpusti = sum(kolicina_v_tonah, na.rm = TRUE)),
-             aes(x = leto, y = izpusti / 1e6, color = tip_izpusta)) + geom_line() + 
-  scale_fill_discrete(breaks = c("Methane", "Nitrogen oxides", "Nitrous oxide"),
-                      labels = c("Metan", "Dušikov monoksid", "Didušikov oksid"))
+             aes(x = leto, y = izpusti / 1e6, color = slovar[tip_izpusta])) + geom_line() +
+  guides(color = guide_legend(title = "Tip izpusta")) + ylab("izpusti v milijonih ton")
 
 #---------------------------------------------------------------------
 #primerjava izpustov po panogah
