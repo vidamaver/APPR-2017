@@ -5,7 +5,7 @@ shinyServer(function(input, output) {
     dcast(drzava, value.var = "izpusti.povrsina")
   })
   
-  output$drzava <- renderUI(
+  output$drzava <- renderPlot(
     selectInput("drzava", label="Izberi državo",
                 choices=c("Vse", levels(izpusti.povrsina$drzava)))
     ggplot(t, aes(x = leto)) + geom_line() +
