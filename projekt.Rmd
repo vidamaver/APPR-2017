@@ -57,7 +57,7 @@ head(tabela_povrsin)
 
 # Analiza in vizualizacija podatkov
 
-```{r vizualizacija, echo=FALSE, message=FALSE}
+```{r vizualizacija, echo=FALSE, warning=FALSE, message=FALSE}
 source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 ```
 
