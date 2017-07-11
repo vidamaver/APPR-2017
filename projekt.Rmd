@@ -1,5 +1,6 @@
 ---
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
+subtitle: "Analiza zračnih emisij v evropskih državah"
 author: "Vida Maver"
 output:
   html_document: default
@@ -11,8 +12,6 @@ runtime: shiny
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE}
-# Če želimo nastaviti pisave v PDF-ju, odkomentiramo
-# in sledimo navodilom v programu.
 #source("fontconfig.r", encoding = "UTF-8")
 
 # Uvoz vseh potrebnih knjižnic
@@ -28,7 +27,24 @@ V svojem projektu pri predmetu Analiza podatkov s programom R bom analizirala ko
 source("uvoz/uvoz1.R", encoding = "UTF-8")
 ```
 
-Podatke o zračnih emisijah evropskih držav sem uvozila v obliki CSV z Eurostata, podatke o površinah držav pa v obliki HTML z Wikipedije.
+Podatke o zračnih emisijah evropskih držav sem uvozila v obliki CSV z Eurostata (http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=env_ac_ainah_r2&lang=en), podatke o površinah držav pa v obliki HTML z Wikipedije (https://en.wikipedia.org/wiki/List_of_European_countries_by_area).
+
+Izgled pridobljenih podatkov v tidy data obliki:
+
+1) Tabela s podatki o izpustih (Eurostat):
+
+- 1. stolpec: leto
+- 2. stolpec: država
+- 3. stolpec: tip izpusta (možne vrednosti: ogljikov dioksid, didušikov oksid, dušikov monoksid, metan)
+- 4. stolpec: področje industrije
+- 5. stolpec: količina v tonah
+
+2) Tabela površin (Wikipedia):
+
+- 1. stolpec: država
+- 2. stolpec: površina v km2
+
+Moj cilj je ugotoviti, katera od evropskih držav ima največje količine zračnih emisij, ali se je količina le-teh glede na to, da se veliko ukvarjamo z okoljsko problematiko, kaj zmanjšala, kje se je količina zračnih emisij zmanjšala najbolj in če se je kje morebiti tudi povečala.
 
 Poglejmo si začetke obeh uvoženih razpredelnic.
 
@@ -48,13 +64,13 @@ source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 Na zemljevidu primerjam države po količini vseh izpustov od leta 2008 do leta 2014 skupaj in sicer glede na površino držav.
 Opomba: Malta ima daleč največji količnik med izpusti in površino, zato sem jo v izrisu zemljevida izpustila, da je med ostalimi odtenki lažje razlikovati.
 
-```{r z, echo = FALSE, fig.align = 'center', fig.cap = 'Količina zračnih emisij po državah'}
+```{r z, echo = FALSE, fig.align = 'center', fig.cap = 'Količine zračnih emisij'}
 z
 ```
 
 Na spodnjih črtnih grafih primerjam spreminjanje količin izpustov skozi leta za posamezno državo glede na njeno površino.Prikazanih je šest držav, ki imajo po vseh letih skupaj največjo količino izpustov glede na njeno površino, dodana pa je tudi Slovenija, da vidimo, kam se uvrščamo v primerjavi s tistimi državami, ki imajo izpustov največ. 
 
-```{r g2, echo = FALSE, fig.align = 'center', fig.cap = 'Spremembe zračnih emisij po državah'}
+```{r g2, echo = FALSE, fig.align = 'center', fig.cap = 'Spremembe zračnih emisij skozi leta'}
 g2 + xlab("leto") + ylab("količina v tonah")
 ```
 
@@ -64,17 +80,17 @@ Glede na to, da ima Malta zelo velik količnik med izpusti in površino, je na s
 g1 + xlab("leto") + ylab("količina v tonah")
 ```
 
-Na naslednjih dveh črtnih grafih je prikazano spreminjanje količine zračnih emisij posameznega tipa izpusta od leta 2008 do leta 2014. Ker je količinsko izpustov ogljikovega dioksida neprimerljivo več od ostalih treh, sem le-te prikazala posebej. Opazimo trend padanja vseh količin izpustov, predvsem pa je ta padec očiten pri ogljikovem dioksidu, ki pa je najbolj prisoten pri onesnaževanju. 
+Na naslednjih dveh črtnih grafih je prikazano spreminjanje količine zračnih emisij posameznega tipa izpusta od leta 2008 do leta 2014. Ker je količinsko izpustov ogljikovega dioksida neprimerljivo več od ostalih treh, sem le-tega prikazala posebej. Opazimo trend padanja vseh količin izpustov, predvsem pa je ta padec očiten pri ogljikovem dioksidu, ki pa je tudi med največjimi onesnaževalci. 
 
-```{r g31, echo = FALSE, fig.align = 'center', fig.cap = 'Zračne emisije ogljikovega dioksida'}
+```{r g31, echo = FALSE, fig.align = 'center', fig.cap = 'Spremembe ogljikovega dioksida skozi leta'}
 g31 + xlab("leto") + ylab("količina v milijardah ton")
 ```
 
-```{r g32, echo = FALSE, fig.align = 'center', fig.cap = 'Zračne emisije didušikovih oksidov, dušikovega monoksida in metana'}
+```{r g32, echo = FALSE, fig.align = 'center', fig.cap = 'Spremembe drugih izpustov skozi leta'}
 g32 + xlab("leto") + ylab("količina v milijonih ton")
 ```
 
-Na naslednjih treh stolpčnih grafih, pa je prikazana celotna količina zračnih emisij po panogah v vseh letih skupaj.Panoge sem razdelila na tri skupine zaradi lažje primerjave. Na prvem grafu so prikazane panoge, ki količino zračnih emisij povečujejo največ, na zadnjem grafu pa skupina tistih panog, ki jih povečujejo najmanj.
+Na naslednjih treh stolpčnih grafih je prikazana celotna količina zračnih emisij po panogah v vseh letih skupaj.Panoge sem razdelila na tri skupine zaradi lažje primerjave. Na prvem grafu so prikazane panoge, ki količino zračnih emisij povečujejo največ, na zadnjem grafu pa skupina tistih panog, ki jih povečujejo najmanj.
 
 ```{r g41, echo = FALSE, fig.align = 'center', fig.cap = 'Primerjava zračnih emisij po panogah 1'}
 g41 + xlab("panoga") + ylab("količina v milijardah ton")
@@ -88,7 +104,9 @@ g42 + xlab("panoga") + ylab("količina v milijonih ton")
 g43 + xlab("panoga") + ylab("količina v milijonih ton")
 ```
 
-```{r shiny, echo = FALSE}
+S spodnjo aplikacijo pa je možno za vsako državo posebej pogledati, kako se je skozi leta spreminjala skupna količina izpustov glede na njeno površino.Pri večini držav je razviden očiten trend zmanjševanja izpustov, kar je v skladu z miselnostjo in potrebo po zmanjšanju onesnaževanja.
+
+```{r shiny, echo = FALSE, fig.align = 'center'}
 shinyAppDir("shiny", options = list(width="100%", height = 600))
 
 ```

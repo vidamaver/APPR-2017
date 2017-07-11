@@ -82,7 +82,7 @@ g2 = ggplot(tabela2 %>% filter(drzava %in% c("Slovenia", "Netherlands", "Luxembo
 #izpustov ogljikovega dioksida je neprimerno več od ostalih izpustov, zato ga prikažem posebaj
 g31 = ggplot(tabela2 %>% filter(tip_izpusta == "Carbon dioxide") %>%
                group_by(leto) %>% summarise(kolicina = sum(kolicina_v_tonah, na.rm = TRUE))) +
-  aes(x = leto, y = kolicina / 1e9) + geom_line(col = "blue")
+  aes(x = leto, y = kolicina / 1e9) + geom_line(col = "orange")
 
 #preostali izpusti prikazani na enem grafu
 
