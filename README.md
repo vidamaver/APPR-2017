@@ -11,7 +11,7 @@ Podatke bom pridobila iz Eurostata (http://appsso.eurostat.ec.europa.eu/nui/show
 
 Pridobljene podatke bom predstavila v dveh tabelah in sicer:
 
-Tabela 1: 
+Tabela 1: Tabela s podatki o izpustih
 
 •	1. stolpec: leto
 
@@ -19,17 +19,17 @@ Tabela 1:
 
 •	3. stolpec: tip izpusta
 
-•	4. stolpec: podrocje_industrije
+•	4. stolpec: področje industrije
 
-•	5. stolpec: kolicina_v_tonah
+•	5. stolpec: količina v tonah
 
 V stolpcu tip izpusta bo možna vrednost ogljikov dioksid, didušikov oksid, dušikov monoksid ali metan.
 
-Tabela 2: Tabela_povrsin
+Tabela 2: Tabela površin
 
-•	1. stolpec: drzava
+•	1. stolpec: država
 
-•	2. stolpec: povrsina_v_km2
+•	2. stolpec: površina v km2
 
 Moj cilj je ugotoviti, katera od evropskih držav ima največje količine zračnih emisij, ali se je količina le-teh glede na to, da se veliko ukvarjamo z okoljsko problematiko, kaj zmanjšala, kje se je količina zračnih emisij zmanjšala najbolj in če se je kje morebiti tudi povečala.
 
