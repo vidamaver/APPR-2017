@@ -8,8 +8,8 @@ shinyServer(function(input, output) {
              summarise(izpusti = sum(kolicina_v_tonah)) %>%
              inner_join(tabela_povrsin),
            aes(x = leto, y = izpusti/povrsina_v_km2)) + geom_line(col = "blue") +
-      ggtitle("Zračne emisije na površino izbrane države") +
-      xlab("leto") + ylab("količina zračnih emisij")
+      ggtitle("Zračne emisije glede na površino izbrane države") +
+      xlab("leto") + ylab("količina v tonah")
   })
 })
 
