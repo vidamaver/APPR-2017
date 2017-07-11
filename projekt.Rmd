@@ -23,7 +23,7 @@ V svojem projektu pri predmetu Analiza podatkov s programom R bom analizirala ko
 
 # Obdelava, uvoz in čiščenje podatkov
 
-```{r uvoz, echo=FALSE, message=FALSE}
+```{r uvoz, echo=FALSE, warning = FALSE, message=FALSE}
 source("uvoz/uvoz1.R", encoding = "UTF-8")
 ```
 
