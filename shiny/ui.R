@@ -4,7 +4,7 @@ shinyUI(fluidPage(
   titlePanel("Zračne emisije po državah"),
   sidebarPanel(
     selectInput("drzava", label = "Izberi državo",
-                choices = c("Vse", levels(izpusti.povrsina$drzava)))
+                choices = c("Vse", parse_character(izpusti.povrsina$drzava)))
   ),
   mainPanel(plotOutput("drzava"))
 )

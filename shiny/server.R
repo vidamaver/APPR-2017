@@ -10,7 +10,6 @@ shinyServer(function(input, output) {
            aes(x = leto, y = izpusti/povrsina_v_km2)) + geom_line(col = "blue") +
       ggtitle("Zračne emisije na površino izbrane države") +
       xlab("leto") + ylab("količina zračnih emisij")
-    
-    #col = blue v geom_line
   })
 })
+
